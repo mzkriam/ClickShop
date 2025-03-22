@@ -5,6 +5,7 @@ use App\Http\Middleware\CheckPassword;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\CheckRole;
+use App\Http\Controllers\Dashboard\CategoryController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -31,6 +32,8 @@ Route::group(
         })->name('admin.dashboard');
 
 
+        Route::post('categories/update_status', [CategoryController::class, 'update_status'])->name('categories.update_status');
+        Route::resource('categories', CategoryController::class);
         Route::group(['middleware' => 'auth:admin'], (function () {
             Route::get('enter-password-route', [checkPasswordController::class, 'enterPassword'])->name('enter-password-route');
             Route::post('check.password', [checkPasswordController::class, 'checkPassword'])->name('check.password');

@@ -44,12 +44,12 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSection" aria-expanded="true"
             aria-controls="collapseSection">
             <i class="fas fa-fw fa-table"></i>
-            <span>Top S</span>
+            <span>{{trans('Dashboard/category.category')}}</span>
         </a>
         <div id="collapseSection" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-dark py-2 collapse-inner rounded">
-                <a class="collapse-item text-light" href="#">
-                    S1
+                <a class="collapse-item text-light" href="{{ route('categories.index') }}">
+                    {{trans('Dashboard/category.category')}}
                 </a>
             </div>
         </div>
@@ -61,6 +61,6 @@
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
- 
+
     <!-- Sidebar Message -->
 </ul>
