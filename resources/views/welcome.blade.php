@@ -70,7 +70,7 @@
                         <i class="fas fa-car-side fa-3x text-white"></i>
                     </div>
                     <div class="featurs-content text-center">
-                        <h5>Free Shipping</h5>
+                        <h5>{{ trans('Dashboard/category.category') }}</h5>
                         <p class="mb-0">Free on order over $300</p>
                     </div>
                 </div>
@@ -466,7 +466,7 @@
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>
     </div>
 </div>
 <!-- Fruits Shop End-->
