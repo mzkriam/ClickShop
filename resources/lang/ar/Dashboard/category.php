@@ -19,5 +19,10 @@ return [
     'parent_category' => 'الفئة الاب',
     'description' => 'الوصف',
     'save' => 'حفظ الفئة',
-    'selecte' => 'اختر الفئة',
+    'selecte' => 'اختر ',
+    'Status' => 'الحالة',
+    'edit' => 'تعديل',
+    'Close' => 'اغلاق',
+    'Warning' => ' هل انت متأكد من عملية الحذف  ?',
+    'delete' => 'حذف'
 ];

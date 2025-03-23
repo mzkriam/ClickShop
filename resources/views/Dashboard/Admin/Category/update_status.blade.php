@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label for="status">{{trans('Dashboard\category.Status')}}</label>
                         <select class="form-control" id="status" name="status" required>
-                            <option value="" selected disabled>--{{trans('Dashboard\category.Choose')}}--</option>
+                            <option value="" selected disabled>--{{trans('Dashboard\category.selecte')}}--</option>
                             <option value="1">{{trans('Dashboard\category.Enabled')}}</option>
                             <option value="0">{{trans('Dashboard\category.Not_enabled')}}</option>
                         </select>

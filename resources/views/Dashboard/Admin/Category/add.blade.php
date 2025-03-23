@@ -1,8 +1,10 @@
 @extends('Dashboard.layouts.master')
 @section('title')
-{{ trans('Dashboard/category.category') }}
+{{ trans('Dashboard/category.add_category') }}
 @endsection
-
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('page-header')
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -45,7 +47,7 @@
                             <label class="form-label mb-3" for="parent_id">
                                 {{ trans('Dashboard/category.parent_category') }}
                             </label>
-                            <select name="parent_id" class="form-select">
+                            <select name="parent_id" class="form-select" id="parent_id_select">
                                 <option value="" selected>{{ trans('Dashboard/category.selecte') }}</option>
                                 @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ old('parent_id') == $category->id ? 'selected' : '' }}>
@@ -80,7 +82,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row row-xs align-items-center my-md-4 mg-b-20">                        
                         <div class="col-md-4">
                             <label class="form-label mb-3" for="description">
@@ -93,21 +94,19 @@
                             <div class="invalid-feedback">
                                 {{ trans('validation.required_filed') }}
                             </div>
-                        </div>
-                       
+                        </div>                       
                     </div>
                     <div class="row row-xs align-items-center my-md-4 mg-b-20 d-flex align-items-stretch">
                         <div class="col-md-6">
                             <label class="form-label mb-3" for="photo">
                                 {{ trans('Dashboard\category.category_photo') }}
                             </label>
-                            <input type="file" accept="image/*" name="photo" onchange="loadFile(event)"
-                                class="form-control form-control-sm">
+                            <input type="file" accept="image/*" name="photo" onchange="loadFile(event)" class="form-control form-control-sm">
                         </div>
                         <div class="col-md-6">
                             <img style="border-radius:50%" width="150px" height="150px" id="output" />
                         </div>
-                    </div>
+                    </div>                    
                     <button type="submit" class="btn btn-info my-3">
                         {{ trans('Dashboard/category.save') }}
                     </button>
@@ -123,28 +122,31 @@
 @endsection
 
 @section('js')
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
-</script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            
+            $('#parent_id_select').select2({
+                placeholder: "{{ trans('Dashboard/category.selecte') }}",   
+                allowClear: true   
+            });
+        });
+    </script>
+    <script>
+        function loadFile(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) 
+            }
+        }
+    </script>
+    
 @endsection
 </body>
 

@@ -17,4 +17,8 @@ class Category extends Model
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

@@ -14,7 +14,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|regex:/^[A-Za-z0-9-أ-ي-pL\s\-]+$/u', 
+            'name' => 'required|max:255|regex:/^[A-Za-z0-9-أ-ي-pL\s\-]+$/u|unique:categories,name',
             'description' => 'nullable|string|max:500',  
             'parent_id' => 'nullable|exists:categories,id',  
             'status' => 'nullable|boolean',          

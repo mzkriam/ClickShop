@@ -42,7 +42,7 @@
                             <td>
                                 @if($category->image)
                                 <img style="border-radius:50%"
-                                    src="{{asset('Dashboard/img/category/'. $category->image->filename)}}" height="50px"
+                                    src="{{asset('Dashboard/img/Category/'. $category->image->filename)}}" height="50px"
                                     width="50px" alt="{{$category->name}}">
                                 @else
                                 <img style="rounded m-0" src="{{asset('Dashboard/img/category_default.png')}}"
@@ -50,7 +50,7 @@
 
                                 @endif
                             </td>
-                            <td>{{ $category->name }}</td>                                               
+                            <td>{{ $category->name }}</td>
                             <td>
                                 <div class="rounded border border-{{$category->status == 1 ? 'success' : 'danger'}}">
                                     {{$category->status == 1 ?
@@ -69,23 +69,23 @@
                                             <i style="color: #0ba360" class="fas fa-sync"></i>&nbsp;&nbsp;
                                             {{trans('Dashboard\category.edit_category')}}
                                         </a>
-                                        
+
                                         <a class="dropdown-item" href="#" data-toggle="modal"
                                             data-target="#update_status{{$category->id}}"><i
                                                 style="color: rgba(255, 0, 200, 0.523)"
                                                 class="fas fa-ethernet"></i>&nbsp;&nbsp;
                                             {{trans('Dashboard\category.Status_change')}}
-                                        </a>                                       
+                                        </a>
                                         <a class="dropdown-item" href="#" data-toggle="modal"
                                             data-target="#delete{{$category->id}}">
                                             <i style="color: rgb(223, 81, 83)" class="fas fa-trash"></i>&nbsp;&nbsp;
                                             {{trans('Dashboard\category.delete_category')}}
-                                        </a>                                    
+                                        </a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        @include('Dashboard.Admin.category.delete')                    
+                        @include('Dashboard.Admin.category.delete')
                         @include('Dashboard.Admin.category.update_status')
                         @endforeach
                     </tbody>

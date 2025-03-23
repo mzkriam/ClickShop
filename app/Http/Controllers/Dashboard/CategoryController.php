@@ -22,7 +22,7 @@ class CategoryController extends Controller
     {
         return $this->categories->create();
     }
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
         return $this->categories->store($request);
     }

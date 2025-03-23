@@ -20,4 +20,9 @@ return [
     'description' => 'Description',
     'save' => 'Save',
     'selecte' => 'Selecte',
+    'Status' => 'Status',
+    'edit' => 'Edit',
+    'Close' => 'Close',
+    'Warning' => 'Are Sure Of The Deleting Process ?',
+    'delete' => 'Delete'
 ];
