@@ -41,6 +41,31 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">{{ trans('Website/Website.contact') }}</a>
                 </div>
+                <div class="nav-item dropdown">                    
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-lang fa-2x"></i>
+                            @if (App::getLocale() == 'ar')
+                            <strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
+                            @else
+                            <strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
+                            @endif
+                        </a>
+                        <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)                            
+                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    @if($properties['native'] == "English")
+                                    <i class="flag-icon flag-icon-us"></i>
+                                    @elseif($properties['native'] == "العربية")
+                                    <i class="flag-icon flag-icon-eg"></i>
+                                    @endif
+                                    {{ $properties['native'] }}
+                                </a>
+                            
+                            @endforeach
+                        </div>
+                    </li>
+                </div>
                 <div class="d-flex m-3 me-0">
                     <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
                     <a href="#" class="position-relative me-4 my-auto">
@@ -50,6 +75,7 @@
                     <a href="{{route('admin.dashboard')}}" title="{{ trans('Website/Website.login') }}" class="my-auto">
                         <i class="fas fa-user fa-2x"></i>
                     </a>
+
                 </div>
             </div>
         </nav>

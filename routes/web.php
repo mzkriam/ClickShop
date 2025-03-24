@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\WebSite\WebSiteController;
 
 
 Route::group(
@@ -12,9 +13,7 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/', function () {
-            return view('welcome');
-        });
+        Route::resource('/', WebSiteController::class);
     }
 );
 

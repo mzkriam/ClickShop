@@ -39,4 +39,5 @@ return [
     'submit_now' => 'Browse Products',
     'products' => 'Explore Our Products',
     'sell_now' => 'Start Selling Today',
+    'category' => 'Category',
 ];
