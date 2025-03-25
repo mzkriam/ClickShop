@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
     {
         DB::beginTransaction();
 
-        try {            
+        try {
             $categoriesData = [
                 ['name' => 'Stores', 'description' => 'Various stores for buying and selling goods.'],
                 ['name' => 'Real Estate for Sale', 'description' => 'Properties available for sale including houses, apartments, and land.'],
@@ -38,22 +38,22 @@ class CategorySeeder extends Seeder
                 ['name' => 'Food and Beverages', 'description' => 'Fresh food, groceries, and beverages for everyday needs.'],
             ];
 
-            
+
             foreach ($categoriesData as $categoryData) {
-            
+
                 $category = Category::create([
                     'name' => $categoryData['name'],
                     'description' => $categoryData['description'],
-                    'status' => 1, 
-                    'parent_id' => null, 
+                    'status' => 1,
+                    'parent_id' => null,
                 ]);
 
-                
+
                 CategoryTranslation::updateOrCreate(
                     ['category_id' => $category->id, 'locale' => 'en'],
                     ['name' => $categoryData['name'], 'description' => $categoryData['description']]
-                );             
-                $this->addArabicTranslation($category);             
+                );
+                $this->addArabicTranslation($category);
                 $this->addCategoryImage($category);
             }
 
@@ -68,42 +68,47 @@ class CategorySeeder extends Seeder
     private function addArabicTranslation($category)
     {
         $arabicTranslations = [
-            'Stores' => 'متاجر',
-            'Real Estate for Sale' => 'عقارات للبيع',
-            'Real Estate for Rent' => 'عقارات للإيجار',
-            'Vehicles' => 'مركبات',
-            'Motorcycles' => 'دراجات نارية',
-            'Services' => 'الخدمات',
-            'Men Fashion' => 'أزياء رجالية',
-            'Women Fashion' => 'أزياء نسائية',
-            'Kids and Toys' => 'أطفال وألعاب',
-            'Jobs' => 'وظائف',
-            'Mobile Phones and Tablets' => 'هواتف موبايل و تابلت',
-            'Laptops and Computers' => 'لابتوبات وكمبيوترات',
-            'Education and Training' => 'تعليم وتدريب',
-            'Video Games and Accessories' => 'ألعاب فيديو وملحقاتها',
-            'Electronics' => 'إلكترونيات',
-            'Sports and Fitness' => 'رياضة ولياقة بدنية',
-            'Books and Hobbies' => 'كتب وهوايات',
-            'Pets' => 'حيوانات',
-            'Business Equipment' => 'معدات شركات',
-            'Home and Garden' => 'منزل وحديقة',
-            'Food and Beverages' => 'طعام وغذاء',
-        ];            
+            'Stores' => ['name' => 'متاجر', 'description' => 'متاجر لبيع وشراء السلع.'],
+            'Real Estate for Sale' => ['name' => 'عقارات للبيع', 'description' => 'عقارات متاحة للبيع بما في ذلك المنازل والشقق والأراضي.'],
+            'Real Estate for Rent' => ['name' => 'عقارات للإيجار', 'description' => 'عقارات متاحة للإيجار بما في ذلك المنازل والشقق والمساحات التجارية.'],
+            'Vehicles' => ['name' => 'مركبات', 'description' => 'سيارات وشاحنات ومركبات أخرى للبيع أو للتبادل.'],
+            'Motorcycles' => ['name' => 'دراجات نارية', 'description' => 'دراجات نارية للبيع، من الدراجات الرياضية إلى الدراجات الكروز.'],
+            'Services' => ['name' => 'الخدمات', 'description' => 'خدمات متنوعة بما في ذلك الصيانة المنزلية وخدمات الأعمال والخدمات الشخصية.'],
+            'Men Fashion' => ['name' => 'أزياء رجالية', 'description' => 'ملابس واكسسوارات عصرية للرجال.'],
+            'Women Fashion' => ['name' => 'أزياء نسائية', 'description' => 'ملابس واكسسوارات عصرية للنساء.'],
+            'Kids and Toys' => ['name' => 'أطفال وألعاب', 'description' => 'كل شيء للأطفال من ألعاب وملابس واكسسوارات.'],
+            'Jobs' => ['name' => 'وظائف', 'description' => 'إعلانات وظائف لمناصب مختلفة في صناعات متعددة.'],
+            'Mobile Phones and Tablets' => ['name' => 'هواتف موبايل و تابلت', 'description' => 'هواتف ذكية وأجهزة تابلت وملحقاتها للبيع.'],
+            'Laptops and Computers' => ['name' => 'لابتوبات وكمبيوترات', 'description' => 'لابتوبات وأجهزة كمبيوتر مكتبية وملحقات كمبيوتر للبيع.'],
+            'Education and Training' => ['name' => 'تعليم وتدريب', 'description' => 'دورات تعليمية وبرامج تدريبية في مجالات متنوعة.'],
+            'Video Games and Accessories' => ['name' => 'ألعاب فيديو وملحقاتها', 'description' => 'ألعاب الفيديو، الأجهزة، وملحقاتها.'],
+            'Electronics' => ['name' => 'إلكترونيات', 'description' => 'إلكترونيات بما في ذلك الأجهزة المنزلية والأدوات الشخصية.'],
+            'Sports and Fitness' => ['name' => 'رياضة ولياقة بدنية', 'description' => 'معدات رياضية وأدوات لياقة بدنية لأسلوب حياة نشط.'],
+            'Books and Hobbies' => ['name' => 'كتب وهوايات', 'description' => 'كتب ومواد للقراءة ومنتجات متعلقة بالهوايات.'],
+            'Pets' => ['name' => 'حيوانات', 'description' => 'حيوانات أليفة، مستلزمات حيوانات، واكسسوارات لمحبي الحيوانات.'],
+            'Business Equipment' => ['name' => 'معدات شركات', 'description' => 'أدوات ومعدات للأعمال بما في ذلك الآلات وملحقات المكاتب.'],
+            'Home and Garden' => ['name' => 'منزل وحديقة', 'description' => 'أثاث منزلي، ديكورات، ولوازم البستنة لمنزلك وحديقتك.'],
+            'Food and Beverages' => ['name' => 'طعام وغذاء', 'description' => 'طعام طازج، بقالة، ومشروبات للاحتياجات اليومية.'],
+        ];
+
         if (isset($arabicTranslations[$category->name])) {
             CategoryTranslation::updateOrCreate(
                 ['category_id' => $category->id, 'locale' => 'ar'],
-                ['name' => $arabicTranslations[$category->name], 'description' => $category->description]
+                [
+                    'name' => $arabicTranslations[$category->name]['name'],
+                    'description' => $arabicTranslations[$category->name]['description']
+                ]
             );
         }
     }
 
+
     private function addCategoryImage($category)
-    {        
-        $imagePath = public_path("Dashboard/img/Category/{$category->name}.jpg");        
-        if (file_exists($imagePath)) {          
+    {
+        $imagePath = public_path("Dashboard/img/Category/{$category->name}.jpg");
+        if (file_exists($imagePath)) {
             $image = new Image();
-            $image->filename = "{$category->name}.jpg"; 
+            $image->filename = "{$category->name}.jpg";
             $image->imageable_id = $category->id;
             $image->imageable_type = 'App\Models\Category';
             $image->save();
